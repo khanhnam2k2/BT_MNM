@@ -11,8 +11,8 @@ class WelcomeController extends Controller
     {
         $posts = Post::inRandomOrder()->get();
         $travels = Post::where('category_id', 3)->orderBy('id', 'desc')->take(3)->get();
-        $culture = Post::where('category_id', 1)->take(2)->get();
-        $politics = Post::where('category_id', 4)->get();
+        $culture = Post::where('category_id', 1)->orderBy('id', 'desc')->take(2)->get();
+        $politics = Post::where('category_id', 4)->orderBy('id', 'desc')->take(3)->get();
         return view('welcome', compact('posts', 'travels', 'culture', 'politics'));
     }
     public function about()

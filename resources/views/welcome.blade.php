@@ -1,7 +1,5 @@
 <x-guest-layout>
-    	
-
-	<!-- Start posts-entry -->
+	<!-- Start posts-Travel -->
 	<section class="section posts-entry">
 		<div class="container">
 			<div class="row mb-4">
@@ -20,7 +18,14 @@
 									<img src="{{ asset('images/' . $post->image) }}"  alt="Image" style="width:100%;height:476px;border-radius:10px;object-fit:cover">
 								</a>
 								<span class="date">{{$post->created_at}}</span>
-								<h2><a href="{{ route('posts.edit', $post->id) }}">{{$post->title}}</a></h2>
+								<div class="d-flex justify-content-between">
+									<h2><a href="{{ route('posts.edit', $post->id) }}">{{$post->title}}</a></h2>
+									<form action="{{route('posts.destroy',$post->id)}}" method="POST">
+									@csrf
+									@method('DELETE')
+									<button type="submit" class="">🚮</button>
+									</form>
+								</div>
 								<p>{{$post->abstract}}</p>
 								<p><a href="{{route('posts.show',$post->id)}}" class="btn btn-sm btn-outline-primary">Read More</a></p>
 							</div>
@@ -34,7 +39,7 @@
 			</div>
 		</div>
 	</section>
-	<!-- End posts-entry -->
+	<!-- End posts-Travel -->
 
 	<!-- Start posts-entry -->
 	<section class="section posts-entry posts-entry-sm bg-light">
@@ -89,7 +94,7 @@
 	</section>
 	<!-- End posts-entry -->
 
-	<!-- Start posts-entry -->
+	<!-- Start posts-Culture -->
 	<section class="section posts-entry">
 		<div class="container">
 			<div class="row mb-4">
@@ -118,37 +123,15 @@
 						
 					</div>
 				</div>
-				{{-- <div class="col-md-3">
-					<ul class="list-unstyled blog-entry-sm">
-						<li>
-							<span class="date">Apr. 14th, 2022</span>
-							<h3><a href="single.html">Don’t assume your user data in the cloud is safe</a></h3>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, nobis ea quis inventore vel voluptas.</p>
-							<p><a href="#" class="read-more">Continue Reading</a></p>
-						</li>
-
-						<li>
-							<span class="date">Apr. 14th, 2022</span>
-							<h3><a href="single.html">Meta unveils fees on metaverse sales</a></h3>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, nobis ea quis inventore vel voluptas.</p>
-							<p><a href="#" class="read-more">Continue Reading</a></p>
-						</li>
-
-						<li>
-							<span class="date">Apr. 14th, 2022</span>
-							<h3><a href="single.html">UK sees highest inflation in 30 years</a></h3>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, nobis ea quis inventore vel voluptas.</p>
-							<p><a href="#" class="read-more">Continue Reading</a></p>
-						</li>
-					</ul>
-				</div> --}}
+				
 			</div>
 		</div>
 	</section>
+	<!-- End posts-Culture -->
 
+	<!-- Start posts-Politics -->
 	<section class="section">
 		<div class="container">
-
 			<div class="row mb-4">
 				<div class="col-sm-6">
 					<h2 class="posts-entry-title">Politics</h2>
@@ -177,8 +160,9 @@
 			
 		</div>
 	</section>
+	<!-- End posts-Politics -->
 
-	<!-- Start retroy layout blog posts -->
+	<!-- Start all posts -->
 	<section class="section bg-light">
 		<div class="container">
 			<h2 class="posts-entry-title">All Posts</h2>
@@ -203,5 +187,5 @@
 			</div>
 		</div>
 	</section>
-	<!-- End retroy layout blog posts -->
+	<!-- End all posts -->
 </x-guest-layout>

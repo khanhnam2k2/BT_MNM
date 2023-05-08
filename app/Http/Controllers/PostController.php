@@ -23,7 +23,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required',
+            'title' => 'required|unique:posts',
             'abstract' => 'required',
             'content' => 'required',
             'image' => 'required|image',
@@ -89,6 +89,6 @@ class PostController extends Controller
     {
         $post->delete();
 
-        return redirect('/posts')->with('success', 'Post deleted successfully!');
+        return redirect('/')->with('success', 'Post deleted successfully!');
     }
 }
